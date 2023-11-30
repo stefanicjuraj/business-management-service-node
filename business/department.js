@@ -45,4 +45,31 @@ class Department {
         return response;
     }
 
+    // Create a new department
+    post(company, dept_name, dept_no, location) {
+        let response = null;
+
+        if (company && dept_name && dept_no && location) {
+            let existingDept = dl.getDepartment(company, dept_no);
+            if (existingDept) {
+                return { "error": "Department number '" + dept_no + "' already exists." };
+            }
+
+            try {
+                let department = new Department(company, null, dept_name, dept_no, location);
+                let insertedDepartment = dl.insertDepartment(department);
+                if (insertedDepartment) {
+                    response = insertedDepartment;
+                } else {
+                    response = { "error": "Failed to create department." };
+                }
+            } catch (error) {
+                response = { "error": "Error creating department: " + error.message };
+            }
+        } else {
+            response = { "error": "Missing required fields for department creation." };
+        }
+        return response;
+    }
+
 }

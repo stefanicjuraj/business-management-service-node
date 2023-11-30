@@ -111,3 +111,5 @@ class Department {
     }
 
 }
+
+module.exports = new Department();

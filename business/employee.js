@@ -31,4 +31,20 @@ class Employee {
         return response;
     }
 
+    // Get all employees
+    getAll(company) {
+        let response = null;
+        if (company) {
+            let employees = dl.getAllEmployee(company);
+            if (employees !== null) {
+                response = employees;
+            } else {
+                response = { "error": "No employees found for company: " + company + "." };
+            }
+        } else {
+            response = { "error": "Company name is missing." };
+        }
+        return response;
+    }
+
 }

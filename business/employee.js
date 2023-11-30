@@ -14,4 +14,21 @@ class Employee {
         this.dept_id = dept_id;
         this.mng_id = mng_id;
     }
+
+    // Get an employee
+    get(company, emp_id) {
+        let response = null;
+        if (company && emp_id) {
+            let employee = dl.getEmployee(emp_id);
+            if (employee !== null) {
+                response = employee;
+            } else {
+                response = { "error": "No employee found for id: " + emp_id + "." };
+            }
+        } else {
+            response = { "error": "The company name AND/OR id is missing." };
+        }
+        return response;
+    }
+
 }

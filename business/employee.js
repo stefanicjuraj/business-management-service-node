@@ -47,4 +47,25 @@ class Employee {
         return response;
     }
 
+    // Create a new employee
+    post(company, emp_name, emp_no, hire_date, job, salary, dept_id, mng_id) {
+        let response = null;
+        if (company && emp_name && emp_no && hire_date && job && salary && dept_id !== undefined && mng_id !== undefined) {
+            try {
+                let newEmployee = new Employee(company, null, emp_name, emp_no, hire_date, job, salary, dept_id, mng_id);
+                let insertedEmployee = dl.insertEmployee(newEmployee);
+                if (insertedEmployee) {
+                    response = insertedEmployee;
+                } else {
+                    response = { "error": "Failed to create employee." };
+                }
+            } catch (error) {
+                response = { "error": "Error creating employee: " + error.message };
+            }
+        } else {
+            response = { "error": "Missing required fields for employee creation." };
+        }
+        return response;
+    }
+
 }

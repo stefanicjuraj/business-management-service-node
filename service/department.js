@@ -39,3 +39,8 @@ router.put('/', (req, res) => {
 
     res.json(response);
 });
+
+// Router handler for an HTTP DELETE request
+router.delete('/', (req, res) => {
+    res.json(department.delete(req.query.company, req.query.dept_id));
+});

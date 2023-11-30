@@ -44,3 +44,5 @@ router.put('/', (req, res) => {
 router.delete('/', (req, res) => {
     res.json(department.delete(req.query.company, req.query.dept_id));
 });
+
+module.exports = router;

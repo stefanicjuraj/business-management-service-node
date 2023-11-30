@@ -17,3 +17,11 @@ router.get('/', (req, res) => {
 
     res.json(response);
 });
+
+// Route handler for an HTTP POST request
+router.post('/', (req, res) => {
+    const { company, dept_name, dept_no, location } = req.body;
+    const result = department.post(company, dept_name, dept_no, location);
+
+    res.json(result);
+});

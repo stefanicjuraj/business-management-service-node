@@ -29,4 +29,20 @@ class Department {
         return response;
     }
 
+    // Get all departments
+    getAll(company) {
+        let response = null;
+        if (company) {
+            let department = dl.getAllDepartment(company);
+            if (department !== null) {
+                response = department;
+            } else {
+                response = { "error": "No departments found for company: " + company + "." };
+            }
+        } else {
+            response = { "error": "Company name is missing." };
+        }
+        return response;
+    }
+
 }

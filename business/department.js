@@ -10,4 +10,23 @@ class Department {
         this.dept_no = dept_no;
         this.location = location;
     }
+
+    // Get a department
+    get(company, id) {
+        let response = null;
+        if (company && id) {
+            let department = dl.getDepartment(company, id);
+            if (department !== null) {
+                response = department;
+            } else {
+                response = {
+                    "error": "No department found for company: " + company + " and id: " + id + "."
+                };
+            }
+        } else {
+            response = { "error": "The company name AND/OR id is missing." };
+        }
+        return response;
+    }
+
 }

@@ -72,4 +72,26 @@ class Department {
         return response;
     }
 
+    // Update a department
+    put(deptInfo, res) {
+        let response = null;
+
+        if (deptInfo && deptInfo.company && deptInfo.dept_id && deptInfo.dept_name && deptInfo.dept_no && deptInfo.location) {
+            try {
+                let department = new Department(deptInfo.company, deptInfo.dept_id, deptInfo.dept_name, deptInfo.dept_no, deptInfo.location);
+                let updatedDepartment = dl.updateDepartment(department);
+                if (updatedDepartment) {
+                    response = { "success": "Department updated successfully.", "department": updatedDepartment };
+                } else {
+                    response = { "error": "Failed to update department." };
+                }
+            } catch (error) {
+                response = { "error": "Error updating department: " + error.message };
+            }
+        } else {
+            response = { "error": "Missing required fields for department update." };
+        }
+        return response;
+    }
+
 }

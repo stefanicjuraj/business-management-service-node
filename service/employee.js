@@ -17,3 +17,10 @@ router.get('/', (req, res) => {
         res.status(400).json({ "error": "The company name AND/OR emp_id is missing." });
     }
 });
+
+// Route handler for an HTTP POST request
+router.post('/', (req, res) => {
+    const { company, emp_name, emp_no, hire_date, job, salary, dept_id, mng_id } = req.body;
+    const response = employee.post(company, emp_name, emp_no, hire_date, job, salary, dept_id, mng_id);
+    res.json(response);
+});

@@ -30,3 +30,8 @@ router.put('/', (req, res) => {
     const response = employee.put(req.body);
     res.json(response);
 });
+
+// Router handler for an HTTP DELETE request
+router.delete('/', (req, res) => {
+    res.json(employee.delete(req.query.emp_id));
+});

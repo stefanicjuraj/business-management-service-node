@@ -17,3 +17,7 @@ app.use(`${baseURL}/departments`, departmentRouter);
 // The 'employeeRouter' router handles employee-related endpoints
 app.use(`${baseURL}/employee`, employeeRouter);
 app.use(`${baseURL}/employees`, employeeRouter);
+
+app.listen(port, () => {
+    console.log(`App running at http://localhost:${port}/`);
+});

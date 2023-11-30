@@ -35,3 +35,5 @@ router.put('/', (req, res) => {
 router.delete('/', (req, res) => {
     res.json(employee.delete(req.query.emp_id));
 });
+
+module.exports = router;

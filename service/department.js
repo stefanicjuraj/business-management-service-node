@@ -25,3 +25,17 @@ router.post('/', (req, res) => {
 
     res.json(result);
 });
+
+// Route handler for an HTTP PUT request
+router.put('/', (req, res) => {
+    const deptInfo = {
+        company: req.body.company,
+        dept_id: req.body.dept_id,
+        dept_name: req.body.dept_name,
+        dept_no: req.body.dept_no,
+        location: req.body.location
+    };
+    const response = department.put(deptInfo);
+
+    res.json(response);
+});

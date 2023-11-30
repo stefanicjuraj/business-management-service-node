@@ -1,0 +1,20 @@
+{
+  "name": "BusinessManagementServiceNode",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "dependencies": {
+    "companydata": "file:companydata",
+    "express": "4.17.3"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "start-nodemon": "nodemon app.js",
+    "start-nodemon-inspect": "nodemon inspect app.js"
+  }
+}

@@ -95,4 +95,20 @@ class Employee {
         return response;
     }
 
+    // Delete an employee
+    delete(emp_id) {
+        let response = null;
+        if (emp_id) {
+            let deleteResult = dl.deleteEmployee(emp_id);
+            if (deleteResult) {
+                response = { "success": "Employee " + emp_id + " deleted successfully." };
+            } else {
+                response = { "error": "Failed to delete employee for company:  and id: " + emp_id + "." };
+            }
+        } else {
+            response = { "error": "The company name AND/OR id is missing." };
+        }
+        return response;
+    }
+
 }

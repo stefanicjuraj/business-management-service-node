@@ -21,3 +21,5 @@ app.use(`${baseURL}/employees`, employeeRouter);
 app.listen(port, () => {
     console.log(`App running at http://localhost:${port}/`);
 });
+
+module.exports = app;

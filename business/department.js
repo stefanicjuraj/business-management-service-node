@@ -94,4 +94,20 @@ class Department {
         return response;
     }
 
+    // Delete a department
+    delete(company, id) {
+        let response = null;
+        if (company && id) {
+            let deleteResult = dl.deleteDepartment(company, id);
+            if (deleteResult) {
+                response = { "success": "Department " + id + " deleted successfully." };
+            } else {
+                response = { "error": "Failed to delete department for company: " + company + " and id: " + id + "." };
+            }
+        } else {
+            response = { "error": "The company name AND/OR id is missing." };
+        }
+        return response;
+    }
+
 }

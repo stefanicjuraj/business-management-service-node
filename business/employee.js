@@ -68,4 +68,31 @@ class Employee {
         return response;
     }
 
+    // Update an employee
+    put(empInfo) {
+        let response = null;
+
+        if (empInfo && empInfo.company && empInfo.emp_id && empInfo.emp_name && empInfo.emp_no && empInfo.hire_date && empInfo.job && empInfo.salary && empInfo.dept_id && empInfo.mng_id) {
+            try {
+                let existingEmployee = dl.getEmployee(empInfo.emp_id);
+                if (!existingEmployee) {
+                    return { "error": "No employee found with ID: " + empInfo.emp_id };
+                }
+
+                let employee = new Employee(empInfo.company, empInfo.emp_id, empInfo.emp_name, empInfo.emp_no, empInfo.hire_date, empInfo.job, empInfo.salary, empInfo.dept_id, empInfo.mng_id);
+                let updatedEmployee = dl.updateEmployee(employee);
+                if (updatedEmployee) {
+                    response = { "success": "Employee updated successfully.", "employee": updatedEmployee };
+                } else {
+                    response = { "error": "Failed to update employee." };
+                }
+            } catch (error) {
+                response = { "error": "Error updating employee: " + error.message };
+            }
+        } else {
+            response = { "error": "Missing required fields for employee update." };
+        }
+        return response;
+    }
+
 }

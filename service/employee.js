@@ -24,3 +24,9 @@ router.post('/', (req, res) => {
     const response = employee.post(company, emp_name, emp_no, hire_date, job, salary, dept_id, mng_id);
     res.json(response);
 });
+
+// Route handler for an HTTP PUT request
+router.put('/', (req, res) => {
+    const response = employee.put(req.body);
+    res.json(response);
+});
